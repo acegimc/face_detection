@@ -1,18 +1,13 @@
 from gpiozero import Button
-from signal import pause
+from time import sleep
 
-SWITCH_PIN = 17  
-
+SWITCH_PIN = 27 
 button = Button(SWITCH_PIN)
 
-def on_button_pressed():
-    print("스위치가 눌렸습니다!")
+print("ctrl+C->exit")
 
-def on_button_released():
-    print("스위치가 떼어졌습니다!")
-
-button.when_pressed = on_button_pressed
-button.when_released = on_button_released
-
-print("스위치 상태를 모니터링 중입니다. 종료하려면 Ctrl+C를 누르세요.")
-pause()
+while True:
+    if button.is_pressed:
+        print("On!")
+        sleep(1)  
+    sleep(1)
